@@ -50,6 +50,7 @@ The app is at `http://127.0.0.1:5173`. The frontend API address is configured in
 - `POST /api/analyses` — create a recommendation
 - `GET /api/analyses/{id}` — retrieve a saved analysis
 - `GET /api/commodities` and `GET /api/materials` — retrieve reference data
+- Testing link - https://packzen-5uvluevj6-adarshs-projects-83b8d8ce.vercel.app/
 - `POST /api/compare` — compare materials
 - `POST /api/cost-estimate` — estimate packaging costs
 - `POST /api/shelf-life-simulation` — simulate shelf life
