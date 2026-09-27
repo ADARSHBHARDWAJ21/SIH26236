@@ -12,6 +12,18 @@ from app.models.models import (
 from app.services.auth_service import get_password_hash
 from app.ai.recommender import generate_recommendations
 
+def _find_csv(filename: str) -> str:
+    candidates = [
+        os.path.join(os.path.dirname(__file__), "..", "..", "data", filename),
+        os.path.join(os.path.dirname(__file__), "..", "..", "..", "data", filename),
+        os.path.join(os.getcwd(), "data", filename),
+        os.path.join(os.getcwd(), "backend", "data", filename)
+    ]
+    for c in candidates:
+        if os.path.exists(c):
+            return c
+    return ""
+
 def seed_database(db: Session):
     # 1. Seed Users
     if db.query(User).count() == 0:
@@ -51,8 +63,8 @@ def seed_database(db: Session):
 
     # 2. Seed Commodities
     if db.query(Commodity).count() == 0:
-        csv_path = os.path.join(os.path.dirname(__file__), "..", "..", "..", "data", "commodities.csv")
-        if os.path.exists(csv_path):
+        csv_path = _find_csv("commodities.csv")
+        if csv_path and os.path.exists(csv_path):
             with open(csv_path, mode="r", encoding="utf-8") as f:
                 reader = csv.DictReader(f)
                 for row in reader:
@@ -78,8 +90,8 @@ def seed_database(db: Session):
 
     # 3. Seed Packaging Materials
     if db.query(PackagingMaterial).count() == 0:
-        csv_path = os.path.join(os.path.dirname(__file__), "..", "..", "..", "data", "packaging_materials.csv")
-        if os.path.exists(csv_path):
+        csv_path = _find_csv("packaging_materials.csv")
+        if csv_path and os.path.exists(csv_path):
             with open(csv_path, mode="r", encoding="utf-8") as f:
                 reader = csv.DictReader(f)
                 for row in reader:
