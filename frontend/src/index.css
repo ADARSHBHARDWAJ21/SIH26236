@@ -1,0 +1,271 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  body {
+    background-color: #F8FAFC;
+    color: #0F172A;
+    font-family: 'Plus Jakarta Sans', 'Inter', system-ui, sans-serif;
+    font-feature-settings: "cv02", "cv03", "cv04", "cv11";
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    font-family: 'Outfit', 'Plus Jakarta Sans', sans-serif;
+    letter-spacing: -0.02em;
+    color: #0F172A;
+  }
+
+  /* Custom Clean White & Blue Scrollbars */
+  ::-webkit-scrollbar {
+    width: 6px;
+    height: 6px;
+  }
+  ::-webkit-scrollbar-track {
+    background: #F1F5F9;
+  }
+  ::-webkit-scrollbar-thumb {
+    background: #CBD5E1;
+    border-radius: 9999px;
+  }
+  ::-webkit-scrollbar-thumb:hover {
+    background: #2563EB;
+  }
+}
+
+@layer components {
+  /* Premium White & Blue Glass Cards */
+  .zen-card, .lab-card {
+    background: #FFFFFF !important;
+    border: 1px solid #E2E8F0 !important;
+    border-radius: 20px;
+    box-shadow: 0 4px 20px -2px rgba(37, 99, 235, 0.06), 0 2px 6px -1px rgba(0, 0, 0, 0.04) !important;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .zen-card::before, .lab-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 2px;
+    background: linear-gradient(90deg, transparent, rgba(37, 99, 235, 0.4), transparent);
+    pointer-events: none;
+  }
+
+  .zen-card-glow, .lab-card-hover {
+    transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+  }
+  .zen-card-glow:hover, .lab-card-hover:hover {
+    border-color: #93C5FD !important;
+    transform: translateY(-2px);
+    box-shadow: 0 12px 28px -4px rgba(37, 99, 235, 0.12), 0 4px 8px -2px rgba(0, 0, 0, 0.04) !important;
+  }
+
+  /* Form Elements */
+  .zen-input, .lab-input {
+    background-color: #FFFFFF !important;
+    border: 1px solid #CBD5E1 !important;
+    color: #0F172A !important;
+    border-radius: 12px;
+    padding: 0.65rem 1rem;
+    outline: none;
+    transition: all 0.2s ease-in-out;
+  }
+  .zen-input:focus, .lab-input:focus {
+    border-color: #2563EB !important;
+    background-color: #FFFFFF !important;
+    box-shadow: 0 0 0 2px rgba(37, 99, 235, 0.18) !important;
+  }
+  .zen-input::placeholder, .lab-input::placeholder {
+    color: #94A3B8 !important;
+  }
+
+  /* Buttons */
+  .btn-primary {
+    background: linear-gradient(135deg, #2563EB 0%, #1D4ED8 50%, #0EA5E9 100%);
+    color: #FFFFFF !important;
+    font-weight: 700;
+    padding: 0.75rem 1.5rem;
+    border-radius: 12px;
+    transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+    position: relative;
+    overflow: hidden;
+    box-shadow: 0 4px 14px -1px rgba(37, 99, 235, 0.35);
+  }
+  .btn-primary * {
+    color: #FFFFFF !important;
+  }
+  .btn-primary:hover {
+    box-shadow: 0 6px 22px rgba(37, 99, 235, 0.45);
+    transform: translateY(-1px);
+    filter: brightness(1.08);
+  }
+  .btn-primary:active {
+    transform: translateY(0);
+  }
+
+  .btn-secondary {
+    background: #FFFFFF;
+    color: #1D4ED8 !important;
+    border: 1px solid #BFDBFE;
+    font-weight: 700;
+    padding: 0.75rem 1.5rem;
+    border-radius: 12px;
+    transition: all 0.2s ease;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+    box-shadow: 0 2px 8px rgba(37, 99, 235, 0.08);
+  }
+  .btn-secondary * {
+    color: #1D4ED8 !important;
+  }
+  .btn-secondary:hover {
+    background: #EFF6FF;
+    border-color: #3B82F6;
+    color: #1E40AF !important;
+    transform: translateY(-1px);
+    box-shadow: 0 4px 14px rgba(37, 99, 235, 0.15);
+  }
+
+  /* Luminous Glow Effects */
+  .text-gradient-zen {
+    background: linear-gradient(135deg, #2563EB 0%, #3B82F6 50%, #0EA5E9 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+  }
+
+  .text-gradient-gold {
+    background: linear-gradient(135deg, #F59E0B 0%, #FBBF24 50%, #FDE047 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+  }
+}
+
+/* Animations */
+@keyframes float {
+  0%, 100% { transform: translateY(0px); }
+  50% { transform: translateY(-8px); }
+}
+
+@keyframes pulseGlow {
+  0%, 100% { opacity: 0.4; transform: scale(1); }
+  50% { opacity: 0.8; transform: scale(1.04); }
+}
+
+.animate-float {
+  animation: float 4s ease-in-out infinite;
+}
+
+.animate-pulse-glow {
+  animation: pulseGlow 3s ease-in-out infinite;
+}
+
+/* Universal White and Blue Theme Adaptations */
+.bg-zen-950 {
+  background-color: #F8FAFC !important;
+}
+
+.bg-zen-900, .bg-zen-900\/90, .bg-zen-900\/60, .bg-zen-900\/40, .bg-zen-900\/80 {
+  background-color: #FFFFFF !important;
+  border-color: #E2E8F0 !important;
+}
+
+.bg-zen-850 {
+  background-color: #F1F5F9 !important;
+  border-color: #E2E8F0 !important;
+}
+
+.bg-zen-800, .bg-zen-800\/60, .bg-zen-800\/80, .bg-zen-750 {
+  background-color: #E2E8F0 !important;
+  border-color: #CBD5E1 !important;
+}
+
+/* Ensure any from-zen- / to-zen- gradients cleanly become soft light blue gradients */
+.from-zen-800, .from-zen-850, .from-zen-900, .from-zen-950 {
+  --tw-gradient-from: #EFF6FF !important;
+  --tw-gradient-to: rgb(239 246 255 / 0) !important;
+  --tw-gradient-stops: var(--tw-gradient-from), var(--tw-gradient-to) !important;
+}
+
+.to-zen-800, .to-zen-850, .to-zen-900, .to-zen-950 {
+  --tw-gradient-to: #DBEAFE !important;
+}
+
+/* Text adaptations */
+.text-warm-100 {
+  color: #0F172A !important;
+}
+.text-warm-200 {
+  color: #1E293B !important;
+}
+.text-warm-300 {
+  color: #334155 !important;
+}
+.text-warm-400 {
+  color: #64748B !important;
+}
+.text-warm-500 {
+  color: #94A3B8 !important;
+}
+
+/* Border adaptations from dark to light */
+.border-white\/\[0\.08\], .border-white\/5, .border-white\/10, .border-white\/15, .border-white\/20 {
+  border-color: #E2E8F0 !important;
+}
+
+/* Titles that had text-white adapt to crisp slate-900 */
+h1.text-white, h2.text-white, h3.text-white, h4.text-white, h5.text-white, h6.text-white {
+  color: #0F172A !important;
+}
+
+div.text-white:not(.btn-primary *):not([class*="bg-blue-"] *):not([class*="bg-gradient-"] *),
+p.text-white:not(.btn-primary *):not([class*="bg-blue-"] *):not([class*="bg-gradient-"] *) {
+  color: #0F172A !important;
+}
+
+span.text-white:not(.btn-primary *):not([class*="bg-blue-"] *):not([class*="bg-gradient-"] *):not([class*="bg-red-"] *):not([class*="bg-amber-"] *):not([class*="rounded-full"]) {
+  color: #0F172A !important;
+}
+
+/* Table rules for light theme */
+thead, thead.bg-zen-900\/90 {
+  background-color: #F1F5F9 !important;
+  color: #475569 !important;
+}
+
+.divide-white\/5, .divide-white\/10 {
+  border-color: #E2E8F0 !important;
+}
+
+/* Recharts Overrides for PackZen White & Blue Theme */
+.recharts-polar-grid-angle line,
+.recharts-polar-grid-concentric circle,
+.recharts-polar-grid-concentric path {
+  stroke: #E2E8F0 !important;
+}
+
+.recharts-polar-angle-axis-text text,
+.recharts-polar-angle-axis text,
+.recharts-polar-angle-axis-tick text {
+  fill: #64748B !important;
+  font-size: 11px;
+  font-family: 'JetBrains Mono', monospace;
+}
+
+.recharts-cartesian-grid-horizontal line,
+.recharts-cartesian-grid-vertical line {
+  stroke: #F1F5F9 !important;
+}
+
+.recharts-text {
+  fill: #64748B !important;
+}
